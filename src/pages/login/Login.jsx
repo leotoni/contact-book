@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormGroup, Alert } from 'reactstrap';
 import { Logo } from 'src/components/logo/logo';
-import * as userActions from 'src/store/actions/user';
 import { SmileIcon } from 'src/components/icons/smile';
+import { bindActionCreators } from 'redux';
 import { LoginForm, LoginContainer, Input, Title, Button, Label } from './styled/login';
+import * as userActions from '../../store/actions/user';
 
 class Login extends React.Component {
   state = {
@@ -25,13 +26,20 @@ class Login extends React.Component {
   }
 
   handleSubmit = (event) => {
+    const { login, password } = this.state;
     event.preventDefault();
     if (this.isValidForm()) {
-      // send request
+      const { actions, history } = this.props;
+      if (login.value === 'admin' && password.value === 'admin') {
+        // имитация авторизации
+        actions.log()
+          .then(() => history.push('/dashboard/contact-list'))
+          .catch(error => console.error(error));
+      }
     }
   }
 
-  isWarning = name => (this.state[name].warn)
+  isWarning = name => (this.state[name].warn ? 'error' : '');
 
   isDisabledButton = () => {
     const { login, password } = this.state;
@@ -46,7 +54,7 @@ class Login extends React.Component {
       this.setState({ login: { warn: true } });
       valid = false;
     }
-    if (!password.value?.length && !this.passTest(password.value)) {
+    if (!password.value?.length) {
       this.setState({ password: { warn: true } });
       valid = false;
     }
@@ -120,5 +128,5 @@ class Login extends React.Component {
 
 export default withRouter(connect(
   state => ({ store: state }),
-  userActions,
+  dispatch => ({ actions: bindActionCreators({ ...userActions }, dispatch) }),
 )(Login));

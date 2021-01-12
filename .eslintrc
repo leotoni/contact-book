@@ -16,6 +16,7 @@
     "import-alias/import-alias": 0,
     "import/no-unresolved": 0,
     "max-len": [2, {"code": 120, "ignoreUrls": true}],
+    "class-methods-use-this": 0,
     "react/jsx-first-prop-new-line": 0,
     "import/prefer-default-export": 0,
     "react/jsx-max-props-per-line": [1, { "maximum": 3 }],

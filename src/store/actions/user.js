@@ -1,11 +1,10 @@
-function log({ login, password }) {
-  return dispatch => login({
-    login,
-    password,
-  }).then(() => {
-    localStorage.setItem('user', JSON.stringify(user));
-    dispatch({ type: 'ON_LOGIN', payload: user });
-  });
+function log() {
+  return dispatch => fetch('http://localhost:3001/profile')
+    .then(resp => resp.json())
+    .then((user) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      dispatch({ type: 'ON_LOGIN', payload: user });
+    });
 }
 
 function logout() {

@@ -4,7 +4,7 @@ import { Form, Input as Inp, Button as Btn, Label as Lab } from 'reactstrap';
 export const LoginForm = styled(Form)`
 margin-top: 20px;
   width: 500px;
-  min-height: 425px;
+  min-height: 370px;
   background-color: white;
   padding: 40px 30px 30px 30px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

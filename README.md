@@ -1,18 +1,23 @@
-# boiler-react-redux
 
-Ejected CRA
+
+Run project
+- npm i 
+- json-server --watch db.json --port 3001
+- npm run start
+
+Enter 
+login: admin
+password: admin
+
 
 Webpack config:
 - eslinter-loder is disabled
 - add alias src/
 
-Components:
+Libraries:
 - styled components
 - redux, redux-thunk
 - reactstrap
-
-Details 
-login form
 
 
 
