@@ -5,9 +5,14 @@ Run project
 - json-server --watch db.json --port 3001
 - npm run start
 
-Enter 
-login: admin
-password: admin
+
+
+Enter app: 
+
+ - login: admin
+ 
+ - password: admin
+
 
 
 Webpack config:
